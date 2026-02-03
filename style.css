@@ -1,72 +1,67 @@
+:root {
+  --primary: #3B82F6;
+  --danger: #ef4444;
+  --success: #10b981;
+  --bg: #f8fafc;
+}
+
 body {
-  margin: 0;
-  font-family: Inter, sans-serif;
-  background: #f2f4f8;
-}
-
-.center-card {
-  max-width: 340px;
-  margin: 100px auto;
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-input, select, button {
-  width: 100%;
-  margin: 8px 0;
-  padding: 10px;
-}
-
-button {
-  background: #3B82F6;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+  margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); color: #334155;
 }
 
 .hidden { display: none; }
+.brand { color: var(--primary); font-weight: 800; letter-spacing: -1px; margin-bottom: 5px; }
 
+/* Dashboard Header */
 header {
-  background: white;
-  padding: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background: white; padding: 15px 25px; display: flex; justify-content: space-between;
+  align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-.stats {
-  display: flex;
-  gap: 10px;
-  padding: 10px;
+/* Stats Cards */
+.stats { display: flex; gap: 15px; padding: 20px; }
+.stat-card {
+  background: white; padding: 20px; border-radius: 15px; flex: 1; text-align: center;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
 }
+.stat-card span { display: block; font-size: 24px; font-weight: bold; }
+.stat-card label { font-size: 12px; color: #64748b; text-transform: uppercase; }
+.pending span { color: var(--danger); }
+.completed span { color: var(--success); }
 
-.card {
-  background: white;
-  padding: 12px;
-  border-radius: 10px;
-  flex: 1;
-  text-align: center;
+/* Create Box */
+.create-box {
+  background: white; margin: 0 20px 20px; padding: 20px; border-radius: 15px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
 }
+.grid-input { display: grid; grid-template-columns: 2fr 1fr; gap: 10px; }
 
-.create, #projectList {
-  padding: 10px;
+/* Project Cards */
+.project-grid { padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
+.project-card {
+  background: white; padding: 20px; border-radius: 15px; position: relative;
+  border-left: 5px solid var(--primary); transition: 0.3s;
 }
+.project-card.Completed { border-left-color: var(--success); opacity: 0.8; }
 
-.project {
-  background: white;
-  padding: 12px;
-  margin-bottom: 12px;
-  border-radius: 10px;
-}
+.del-btn { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #cbd5e1; cursor: pointer; font-size: 18px; }
+.del-btn:hover { color: var(--danger); }
 
-.project a {
-  display: inline-block;
-  margin-right: 10px;
-  color: #3B82F6;
-  text-decoration: none;
-  font-weight: 500;
+/* Buttons */
+button { cursor: pointer; transition: 0.2s; font-weight: 600; }
+.btn-primary { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 8px; margin-top: 10px; }
+.btn-outline { padding: 8px 15px; background: none; border: 1.5px solid var(--primary); color: var(--primary); border-radius: 8px; }
+.status-badge { 
+  display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; 
+  cursor: pointer; margin-top: 10px; border: none;
 }
+.bg-pending { background: #fee2e2; color: #b91c1c; }
+.bg-completed { background: #dcfce7; color: #15803d; }
+
+.links-row { margin-top: 15px; display: flex; gap: 10px; }
+.links-row a { text-decoration: none; font-size: 20px; }
+
+input, select {
+  width: 100%; margin: 8px 0; padding: 12px; border: 1.5px solid #e2e8f0; border-radius: 8px; box-sizing: border-box;
+              }
+  
