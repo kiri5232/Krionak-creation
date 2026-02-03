@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>krionak-creation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginPage" class="center-card">
+  <h2>krionak-creation</h2>
+  <input id="email" type="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
+  <button onclick="login()">Login / Register</button>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="hidden">
+  <header>
+    <h2>krionak-creation</h2>
+    <button onclick="logout()">Logout</button>
+  </header>
+
+  <section class="stats">
+    <div class="card" id="totalEl">Total: 0</div>
+    <div class="card" id="pendingEl">Pending: 0</div>
+    <div class="card" id="completedEl">Completed: 0</div>
+  </section>
+
+  <section class="create">
+    <input id="projectName" placeholder="Project name">
+
+    <select id="projectType">
+      <option value="Short">Short</option>
+      <option value="Long">Long</option>
+    </select>
+
+    <input id="voiceLink" placeholder="Voice (Google Drive link)">
+    <input id="videoLink" placeholder="Video (Google Drive link)">
+    <input id="fileLink" placeholder="File/Image (Google Drive link)">
+
+    <button onclick="createProject()">Create Project</button>
+  </section>
+
+  <section id="projectList"></section>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
