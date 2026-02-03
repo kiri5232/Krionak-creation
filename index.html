@@ -3,70 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>krionak-creation</title>
+  <title>krionak-creation | Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- LOGIN -->
-<div id="loginPage" class="center-card">
-  <h2>krionak-creation</h2>
-  <input id="email" type="email" placeholder="Email">
-  <input id="password" type="password" placeholder="Password">
-  <button onclick="login()">Login / Register</button>
-</div>
-
-<!-- DASHBOARD -->
-<div id="dashboard" class="hidden">
-  <header>
-    <h2>krionak-creation</h2>
-    <button onclick="logout()">Logout</button>
-  </header>
-
-  <div class="stats">
-  <button onclick="filterProjects('all')">Total: <span id="totalCount">0</span></button>
-  <button onclick="filterProjects('pending')">Pending: <span id="pendingCount">0</span></button>
-  <button onclick="filterProjects('completed')">Completed: <span id="completedCount">0</span></button>
-</div>
-
-  <section class="create">
-    <input id="projectName" placeholder="Project name">
-
-    <select id="projectType">
-      <option value="Short">Short</option>
-      <option value="Long">Long</option>
-    </select>
-
-    <input id="voiceLink" placeholder="Voice (Google Drive link)">
-    <input id="videoLink" placeholder="Video (Google Drive link)">
-    <input id="fileLink" placeholder="File/Image (Google Drive link)">
-
-    <button onclick="createProject()">Create Project</button>
-  </section>
-
-  <div class="project-card" onclick="openProject(${index})">
-  <h4>${project.name}</h4>
-  <p>Status: ${project.status}</p>
-  </div>
-  <div id="projectView" class="hidden">
-  <h3 id="viewTitle"></h3>
-
-  <select id="statusSelect" onchange="updateStatus()">
-    <option value="pending">Pending</option>
-    <option value="processing">Processing</option>
-    <option value="completed">Completed</option>
-  </select>
-
-  <textarea id="scriptText" placeholder="Project Script..."></textarea>
-
-  <p>Voice: <a id="voiceLink" target="_blank">Open</a></p>
-  <p>Video: <a id="videoLink" target="_blank">Open</a></p>
-  <p>Image: <a id="imageLink" target="_blank">Open</a></p>
-
-  <button onclick="deleteProject()">❌ Delete Project</button>
-  <button onclick="closeProject()">Close</button>
+  <div id="loginPage" class="center-card">
+    <h2 class="brand">krionak-creation</h2>
+    <p>Admin Control Panel</p>
+    <input id="email" type="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+    <button class="btn-primary" onclick="login()">Login / Access</button>
   </div>
 
-<script type="module" src="app.js"></script>
+  <div id="dashboard" class="hidden">
+    <header>
+      <h2 class="brand">krionak-creation</h2>
+      <button class="btn-outline" onclick="logout()">Logout</button>
+    </header>
+
+    <section class="stats">
+      <div class="stat-card">
+        <span id="totalEl">0</span>
+        <label>Total</label>
+      </div>
+      <div class="stat-card pending">
+        <span id="pendingEl">0</span>
+        <label>Pending</label>
+      </div>
+      <div class="stat-card completed">
+        <span id="completedEl">0</span>
+        <label>Completed</label>
+      </div>
+    </section>
+
+    <section class="create-box">
+      <h3>Create New Project</h3>
+      <div class="grid-input">
+        <input id="projectName" placeholder="Project Name">
+        <select id="projectType">
+          <option value="Short">Short (Reel/TikTok)</option>
+          <option value="Long">Long (YouTube)</option>
+        </select>
+      </div>
+      <input id="voiceLink" placeholder="🎙️ Voice Link (G-Drive)">
+      <input id="videoLink" placeholder="🎥 Video Link (G-Drive)">
+      <input id="fileLink" placeholder="📄 File/Assets Link">
+      <button class="btn-primary" onclick="createProject()">+ Add Project</button>
+    </section>
+
+    <h3 style="padding: 10px 20px;">Active Projects</h3>
+    <section id="projectList" class="project-grid"></section>
+  </div>
+
+  <script type="module" src="app.js"></script>
 </body>
 </html>
