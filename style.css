@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  background: #f2f4f8;
+}
+
+.center-card {
+  max-width: 340px;
+  margin: 100px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+input, select, button {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+}
+
+button {
+  background: #3B82F6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.hidden { display: none; }
+
+header {
+  background: white;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stats {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+.card {
+  background: white;
+  padding: 12px;
+  border-radius: 10px;
+  flex: 1;
+  text-align: center;
+}
+
+.create, #projectList {
+  padding: 10px;
+}
+
+.project {
+  background: white;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+}
+
+.project a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #3B82F6;
+  text-decoration: none;
+  font-weight: 500;
+}
