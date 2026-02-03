@@ -23,11 +23,11 @@
     <button onclick="logout()">Logout</button>
   </header>
 
-  <section class="stats">
-    <div class="card" id="totalEl">Total: 0</div>
-    <div class="card" id="pendingEl">Pending: 0</div>
-    <div class="card" id="completedEl">Completed: 0</div>
-  </section>
+  <div class="stats">
+  <button onclick="filterProjects('all')">Total: <span id="totalCount">0</span></button>
+  <button onclick="filterProjects('pending')">Pending: <span id="pendingCount">0</span></button>
+  <button onclick="filterProjects('completed')">Completed: <span id="completedCount">0</span></button>
+</div>
 
   <section class="create">
     <input id="projectName" placeholder="Project name">
@@ -44,8 +44,28 @@
     <button onclick="createProject()">Create Project</button>
   </section>
 
-  <section id="projectList"></section>
-</div>
+  <div class="project-card" onclick="openProject(${index})">
+  <h4>${project.name}</h4>
+  <p>Status: ${project.status}</p>
+  </div>
+  <div id="projectView" class="hidden">
+  <h3 id="viewTitle"></h3>
+
+  <select id="statusSelect" onchange="updateStatus()">
+    <option value="pending">Pending</option>
+    <option value="processing">Processing</option>
+    <option value="completed">Completed</option>
+  </select>
+
+  <textarea id="scriptText" placeholder="Project Script..."></textarea>
+
+  <p>Voice: <a id="voiceLink" target="_blank">Open</a></p>
+  <p>Video: <a id="videoLink" target="_blank">Open</a></p>
+  <p>Image: <a id="imageLink" target="_blank">Open</a></p>
+
+  <button onclick="deleteProject()">❌ Delete Project</button>
+  <button onclick="closeProject()">Close</button>
+  </div>
 
 <script type="module" src="app.js"></script>
 </body>
