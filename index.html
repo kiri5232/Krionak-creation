@@ -1,61 +1,44 @@
+welcome page 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>krionak-creation | Dashboard</title>
+  <meta charset="UTF-8">
+  <title>Krionak Creation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div id="loginPage" class="center-card">
-    <h2 class="brand">krionak-creation</h2>
-    <p>Admin Control Panel</p>
-    <input id="email" type="email" placeholder="Email">
-    <input id="password" type="password" placeholder="Password">
-    <button class="btn-primary" onclick="login()">Login / Access</button>
+<div class="container">
+
+  <!-- LEFT VISUAL -->
+  <div class="left">
+    <img src="illustration.png" alt="Krionak Illustration">
   </div>
 
-  <div id="dashboard" class="hidden">
-    <header>
-      <h2 class="brand">krionak-creation</h2>
-      <button class="btn-outline" onclick="logout()">Logout</button>
-    </header>
+  <!-- RIGHT CONTENT -->
+  <div class="right">
+    <h1>krionak-creation</h1>
 
-    <section class="stats">
-      <div class="stat-card">
-        <span id="totalEl">0</span>
-        <label>Total</label>
-      </div>
-      <div class="stat-card pending">
-        <span id="pendingEl">0</span>
-        <label>Pending</label>
-      </div>
-      <div class="stat-card completed">
-        <span id="completedEl">0</span>
-        <label>Completed</label>
-      </div>
-    </section>
+    <p>
+      Krionak Creation is a creator-focused platform where ideas turn into real content.<br><br>
+      From writing scripts to tracking progress, everything stays organized in one place.<br><br>
+      No chaos, no confusion — just a clean workflow.
+    </p>
 
-    <section class="create-box">
-      <h3>Create New Project</h3>
-      <div class="grid-input">
-        <input id="projectName" placeholder="Project Name">
-        <select id="projectType">
-          <option value="Short">Short (Reel/TikTok)</option>
-          <option value="Long">Long (YouTube)</option>
-        </select>
-      </div>
-      <input id="voiceLink" placeholder="🎙️ Voice Link (G-Drive)">
-      <input id="videoLink" placeholder="🎥 Video Link (G-Drive)">
-      <input id="fileLink" placeholder="📄 File/Assets Link">
-      <button class="btn-primary" onclick="createProject()">+ Add Project</button>
-    </section>
+    <ul>
+      <li>Where ideas turn into content</li>
+      <li>From script to screen — simplified</li>
+      <li>Create. Track. Complete</li>
+    </ul>
 
-    <h3 style="padding: 10px 20px;">Active Projects</h3>
-    <section id="projectList" class="project-grid"></section>
+    <div class="buttons">
+      <button class="login-btn">Login</button>
+      <button class="register-btn">Register</button>
+    </div>
   </div>
 
-  <script type="module" src="app.js"></script>
+</div>
+
 </body>
 </html>
