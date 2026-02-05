@@ -25,6 +25,20 @@ import {
   getDownloadURL 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
+// ====== PAGE NAVIGATION FUNCTIONS ======
+
+window.goLogin = function () {
+  show("loginPage");
+};
+
+window.goRegister = function () {
+  show("registerPage");
+};
+
+window.logout = function () {
+  signOut(auth);
+};
+
 /* ================= FIREBASE CONFIG ================= */
 const firebaseConfig = {
   apiKey: "AIzaSyASf9U3FPS5CAl2amNE8g4dWKbJu5HiOIY",
@@ -46,9 +60,6 @@ function show(page) {
   pages.forEach(p => document.getElementById(p).classList.add("hidden"));
   document.getElementById(page).classList.remove("hidden");
 }
-
-window.goLogin = () => show("loginPage");
-window.goRegister = () => show("registerPage");
 
 /* ================= AUTH ================= */
 document.getElementById("loginBtn").onclick = () => {
