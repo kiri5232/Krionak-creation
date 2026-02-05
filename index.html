@@ -1,4 +1,3 @@
-welcome!
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,42 +8,93 @@ welcome!
 </head>
 <body>
 
-<div class="container">
+<!-- ================= HOME / LANDING ================= -->
+<section id="homePage" class="page">
+  <header class="top-bar">
+    <h1>Krionak</h1>
+    <div class="nav-actions">
+      <button onclick="goLogin()">Login</button>
+      <button onclick="goRegister()">Register</button>
+    </div>
+  </header>
 
-  <!-- LEFT VISUAL -->
-  <div class="left">
-    <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=900&q=80" alt="Krionak Illustration">
+  <div class="hero">
+    <h2>Your Creator Notes Space</h2>
+    <p>Write ideas. Add images. Record voice. Stay organized.</p>
+    <button class="primary-btn" onclick="goLogin()">Get Started</button>
+  </div>
+</section>
+
+<!-- ================= LOGIN ================= -->
+<section id="loginPage" class="page hidden">
+  <div class="auth-box">
+    <h2>Login</h2>
+
+    <input type="email" id="loginEmail" placeholder="Email">
+    <input type="password" id="loginPassword" placeholder="Password">
+
+    <button class="primary-btn" id="loginBtn">Login</button>
+
+    <p class="link-text">
+      New here?
+      <span onclick="goRegister()">Create account</span>
+    </p>
+  </div>
+</section>
+
+<!-- ================= REGISTER ================= -->
+<section id="registerPage" class="page hidden">
+  <div class="auth-box">
+    <h2>Create Account</h2>
+
+    <input type="email" id="registerEmail" placeholder="Email">
+    <input type="password" id="registerPassword" placeholder="Password">
+
+    <button class="primary-btn" id="registerBtn">Register</button>
+
+    <p class="link-text">
+      Already have account?
+      <span onclick="goLogin()">Login</span>
+    </p>
+  </div>
+</section>
+
+<!-- ================= NOTES DASHBOARD ================= -->
+<section id="notesPage" class="page hidden">
+
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <h1>My Notes</h1>
+    <button onclick="logout()">Logout</button>
+  </header>
+
+  <!-- CREATE NOTE -->
+  <div class="note-editor">
+    <textarea id="noteText" placeholder="Write your note here..."></textarea>
+
+    <div class="upload-row">
+      <label>
+        📷 Image
+        <input type="file" id="noteImage" accept="image/*">
+      </label>
+
+      <label>
+        🎙️ Voice
+        <input type="file" id="noteAudio" accept="audio/*">
+      </label>
+    </div>
+
+    <button class="primary-btn" id="saveNoteBtn">Save Note</button>
   </div>
 
-  <!-- RIGHT CONTENT -->
-  <div class="right">
-    <h1>krionak-creation</h1>
+  <!-- NOTES LIST -->
+  <div id="notesContainer" class="notes-container">
+    <!-- Notes will appear here -->
+  </div>
 
-    <p>
-      Krionak Creation is a creator-focused platform where ideas turn into real content.<br><br>
-      From writing scripts to tracking progress, everything stays organized in one place.<br><br>
-      No chaos, no confusion — just a clean workflow.
-    </p>
-    <div class="hero-actions">
-  <button onclick="openLogin()">Login</button>
-  <button onclick="openLogin()">Register</button>
-    </div>
-    <button onclick="openLogin()">Get Started</button>
+</section>
 
-    <!-- LOGIN PAGE -->
-<div id="loginPage" class="hidden">
-  <h2>Login</h2>
-
-  <input id="email" type="email" placeholder="Email">
-  <input id="password" type="password" placeholder="Password">
-
-  <button onclick="login()">Login</button>
-  <button onclick="register()">Register</button>
-
-  <p onclick="closeLogin()" style="cursor:pointer;">✖ Close</p>
-</div>
-
-<!-- DASHBOARD -->
-<div id="dashboard" class="hidden">
-  <!-- tera dashboard code -->
-</div>
+<!-- ================= JS ================= -->
+<script src="app.js"></script>
+</body>
+</html>
