@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Secret Mission 😏</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      text-align: center;
+      background: black;
+      color: white;
+    }
+
+    .page {
+      display: none;
+      padding-top: 100px;
+    }
+
+    #page1 {
+      display: block;
+    }
+
+    input, button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    #page2 {
+      background: #111;
+      height: 100vh;
+      position: relative;
+    }
+
+    #noBtn {
+      position: absolute;
+    }
+
+    #page3 {
+      background: #002b36;
+      height: 100vh;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- 🔐 PAGE 1 -->
+<div id="page1" class="page">
+  <h1>🔐 Secret Entry</h1>
+  <p>Password dalo 👀</p>
+
+  <input type="password" id="pass">
+  <br>
+  <button onclick="checkPass()">Unlock 😏</button>
+
+  <p id="msg"></p>
+</div>
+
+<!-- 😏 PAGE 2 -->
+<div id="page2" class="page">
+  <h2>Ek important sawal 😌</h2>
+  <p>Rayzen sundar aur acha bacha hai?</p>
+
+  <button onclick="goNext()">YES 😎</button>
+  <button id="noBtn">NO 😈</button>
+</div>
+
+<!-- 🎁 PAGE 3 -->
+<div id="page3" class="page">
+  <h1>🎉 Correct Choice 😏</h1>
+  <p>Clue: “Jahan hum sabse zyada time waste karte the 👀”</p>
+</div>
+
+<script>
+function checkPass() {
+  var p = document.getElementById("pass").value;
+
+  if(p === "rayzen123") { // 👈 password change kar
+    document.getElementById("page1").style.display = "none";
+    document.getElementById("page2").style.display = "block";
+  } else {
+    document.getElementById("msg").innerText = "❌ Galat hai... try again 😈";
+  }
+}
+
+// YES → next page
+function goNext() {
+  document.getElementById("page2").style.display = "none";
+  document.getElementById("page3").style.display = "block";
+}
+
+// NO button bhaagega 😏
+var no = document.getElementById("noBtn");
+
+no.addEventListener("mouseover", function() {
+  var x = Math.floor(Math.random() * window.innerWidth - 100);
+  var y = Math.floor(Math.random() * window.innerHeight - 100);
+
+  no.style.left = x + "px";
+  no.style.top = y + "px";
+});
+</script>
+
+</body>
+</html>
