@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Secret Portal 😏</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      text-align: center;
+      font-family: Arial;
+      padding-top: 100px;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #secret {
+      display: none;
+      margin-top: 20px;
+      font-size: 20px;
+      color: lightgreen;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>🔐 Secret Page</h1>
+<p>Enter Password to continue 👀</p>
+
+<input type="password" id="pass" placeholder="Enter Password">
+<br><br>
+<button onclick="checkPass()">Unlock 😏</button>
+
+<p id="msg"></p>
+
+<div id="secret">
+  🎉 Correct!  
+  <br><br>
+  👉 Clue: "Jahan hum sabse zyada time waste karte the 😏"
+</div>
+
+<script>
+function checkPass() {
+  var password = document.getElementById("pass").value;
+
+  if(password === "rayzen123") {  // 👈 Yahan apna password change kar
+    document.getElementById("secret").style.display = "block";
+    document.getElementById("msg").innerText = "";
+  } else {
+    document.getElementById("msg").innerText = "❌ Wrong Password... Try again 😈";
+  }
+}
+</script>
+
+</body>
+</html>
