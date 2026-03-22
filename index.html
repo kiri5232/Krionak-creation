@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Secret Mission 😏</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      text-align: center;
+      color: white;
+    }
+
+    .page {
+      display: none;
+      padding-top: 100px;
+    }
+
+    #page1 {
+      display: block;
+      background: black;
+      height: 100vh;
+    }
+
+    input, button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 12px;
+      border: none;
+    }
+
+    /* 😏 PAGE 2 */
+    #page2 {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #bg2 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    #page2Content {
+      position: relative;
+      z-index: 2;
+    }
+
+    #noBtn {
+      position: absolute;
+    }
+
+    /* 🧸 TEDDY ANIMATION */
+    .teddy {
+      width: 120px;
+      margin-bottom: 10px;
+      animation: bounce 2s infinite ease-in-out;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* 💖 YES BUTTON ANIMATION */
+    .yesBtn {
+      background: #ff4da6;
+      color: white;
+      box-shadow: 0 0 10px #ff4da6, 0 0 20px #ff4da6;
+      animation: heartbeat 1.2s infinite;
+    }
+
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.1); }
+      50% { transform: scale(1); }
+      75% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    /* 🌌 PAGE 3 */
+    #page3 {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #0a0f2c, #000000);
+    }
+
+    .star {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 8px white;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- 🔐 PAGE 1 -->
+<div id="page1" class="page">
+  <h1>🔐 Secret Entry</h1>
+  <p>Password dalo 👀</p>
+
+  <input type="password" id="pass">
+  <br>
+  <button onclick="checkPass()">Unlock 😏</button>
+
+  <p id="msg"></p>
+</div>
+
+<!-- 😏 PAGE 2 -->
+<div id="page2" class="page">
+
+  <canvas id="bg2"></canvas>
+
+  <div id="page2Content">
+    <h2>Ek important sawal 😌</h2>
+
+    <!-- 🧸 Teddy -->
+    <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="teddy">
+
+    <p>Rayzen sundar aur acha bacha hai?</p>
+
+    <button class="yesBtn" onclick="goNext()">YES 😎</button>
+    <button id="noBtn">NO 😈</button>
+  </div>
+
+</div>
+
+<!-- 🎁 PAGE 3 -->
+<div id="page3" class="page">
+  <h1>🎉 Correct Choice 😏</h1>
+  <p>Clue: “Jahan hum sabse zyada time waste karte the 👀”</p>
+</div>
+
+<script>
+
+// 🔐 Password Check
+function checkPass() {
+  var p = document.getElementById("pass").value;
+
+  if(p === "rayzen123") {
+    document.getElementById("page1").style.display = "none";
+    document.getElementById("page2").style.display = "block";
+    startLiquid();
+  } else {
+    document.getElementById("msg").innerText = "❌ Galat hai... try again 😈";
+  }
+}
+
+// YES → next page
+function goNext() {
+  document.getElementById("page2").style.display = "none";
+  document.getElementById("page3").style.display = "block";
+  startGalaxy();
+}
+
+// 😈 NO button bhaagega
+var no = document.getElementById("noBtn");
+
+no.addEventListener("mouseover", function() {
+  var x = Math.random() * (window.innerWidth - 100);
+  var y = Math.random() * (window.innerHeight - 100);
+
+  no.style.left = x + "px";
+  no.style.top = y + "px";
+});
+
+// 🌊 Liquid Background
+function startLiquid(){
+  let canvas = document.getElementById("bg2");
+  let ctx = canvas.getContext("2d");
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let colors = [
+    [255, 0, 150],
+    [0, 200, 255],
+    [120, 0, 255],
+    [255, 100, 0]
+  ];
+
+  let t = 0;
+
+  function animate(){
+    t += 0.01;
+
+    let x = Math.sin(t) * 100;
+    let y = Math.cos(t) * 100;
+
+    let gradient = ctx.createRadialGradient(
+      canvas.width/2 + x,
+      canvas.height/2 + y,
+      100,
+      canvas.width/2,
+      canvas.height/2,
+      canvas.width
+    );
+
+    let c1 = colors[Math.floor((t*10)%colors.length)];
+    let c2 = colors[Math.floor((t*10+1)%colors.length)];
+
+    gradient.addColorStop(0, `rgb(${c1[0]},${c1[1]},${c1[2]})`);
+    gradient.addColorStop(1, `rgb(${c2[0]},${c2[1]},${c2[2]})`);
+
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}
+
+// 🌌 Galaxy
+function startGalaxy(){
+  let page3 = document.getElementById("page3");
+
+  for(let i=0; i<120; i++){
+    let star = document.createElement("div");
+    star.className = "star";
+
+    star.style.top = Math.random() * window.innerHeight + "px";
+    star.style.left = Math.random() * window.innerWidth + "px";
+
+    page3.appendChild(star);
+  }
+}
+
+</script>
+
+</body>
+  </html>
