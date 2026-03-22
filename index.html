@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Secret Mission 😏</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      text-align: center;
+      background: black;
+      color: white;
+    }
+
+    .page {
+      display: none;
+      padding-top: 100px;
+    }
+
+    #page1 {
+      display: block;
+    }
+
+    input, button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    #page2 {
+      background: #111;
+      height: 100vh;
+      position: relative;
+    }
+
+    #noBtn {
+      position: absolute;
+    }
+
+    /* 🌌 PAGE 3 Galaxy Background */
+    #page3 {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #0a0f2c, #000000);
+    }
+
+    .star {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 8px white;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- 🔐 PAGE 1 -->
+<div id="page1" class="page">
+  <h1>🔐 Secret Entry</h1>
+  <p>Password dalo 👀</p>
+
+  <input type="password" id="pass">
+  <br>
+  <button onclick="checkPass()">Unlock 😏</button>
+
+  <p id="msg"></p>
+</div>
+
+<!-- 😏 PAGE 2 -->
+<div id="page2" class="page">
+  <h2>Ek important sawal 😌</h2>
+  <p>Rayzen sundar aur acha bacha hai?</p>
+
+  <button onclick="goNext()">YES 😎</button>
+  <button id="noBtn">NO 😈</button>
+</div>
+
+<!-- 🎁 PAGE 3 -->
+<div id="page3" class="page">
+  <h1>🎉 Correct Choice 😏</h1>
+  <p>Clue: “Jahan hum sabse zyada time waste karte the 👀”</p>
+</div>
+
+<script>
+
+// 🔐 Password Check
+function checkPass() {
+  var p = document.getElementById("pass").value;
+
+  if(p === "rayzen123") {
+    document.getElementById("page1").style.display = "none";
+    document.getElementById("page2").style.display = "block";
+  } else {
+    document.getElementById("msg").innerText = "❌ Galat hai... try again 😈";
+  }
+}
+
+// YES → next page + galaxy start
+function goNext() {
+  document.getElementById("page2").style.display = "none";
+  document.getElementById("page3").style.display = "block";
+
+  startGalaxy(); // 👈 galaxy yaha start hoga
+}
+
+// 😈 NO button bhaagega
+var no = document.getElementById("noBtn");
+
+no.addEventListener("mouseover", function() {
+  var x = Math.floor(Math.random() * window.innerWidth - 100);
+  var y = Math.floor(Math.random() * window.innerHeight - 100);
+
+  no.style.left = x + "px";
+  no.style.top = y + "px";
+});
+
+
+// 🌌 Galaxy Function
+function startGalaxy(){
+
+  let page3 = document.getElementById("page3");
+
+  let messages = [
+    "✨ Special memory 💖",
+    "🌙 Yaad hai ye?",
+    "💫 Kabhi nahi bhulega",
+    "❤️ Sirf tumhare liye",
+    "🌌 Tum meri universe ho"
+  ];
+
+  // stars create
+  for(let i=0; i<120; i++){
+    let star = document.createElement("div");
+    star.className = "star";
+
+    star.style.top = Math.random() * window.innerHeight + "px";
+    star.style.left = Math.random() * window.innerWidth + "px";
+
+    star.onclick = function(){
+      let msg = messages[Math.floor(Math.random()*messages.length)];
+      alert(msg);
+    }
+
+    page3.appendChild(star);
+  }
+
+  // animation
+  setInterval(()=>{
+    let stars = document.querySelectorAll(".star");
+
+    stars.forEach(star=>{
+      let top = parseFloat(star.style.top);
+
+      star.style.top = (top + 0.3) + "px";
+
+      if(top > window.innerHeight){
+        star.style.top = "0px";
+      }
+
+      star.style.opacity = Math.random();
+    });
+
+  }, 40);
+}
+
+</script>
+
+</body>
+</html>
